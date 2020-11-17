@@ -1,27 +1,27 @@
 var count = 1,
-    temp, opt, result = 0,
-    optp, counter = 0,
+    temp=0, opt, result = 0,
+    optp, counter = 1,
     eql = 0;
 
-function calculate(a) {
+function calc(a) {
     if (a == '+' || a == '-' || a == '/' || a == '%' || a == '*' || a == '=') {
         if (count != 1) {
             opt = a;
             count++;
             if (opt == '+') {
-                add(document.getElementById('dis').value);
+                add();
             }
             if (opt == '-') {
-                sub(document.getElementById('dis').value);
+                sub();
             }
             if (opt == '*') {
-                mul(document.getElementById('dis').value);
+                mul();
             }
             if (opt == '/') {
-                div(document.getElementById('dis').value);
+                div();
             }
             if (opt == '%') {
-                mod(document.getElementById('dis').value);
+                mod();
             }
             if (opt == '=') {
                 res();
@@ -29,108 +29,162 @@ function calculate(a) {
         } else {
             alert("please select no. first");
         }
-    } else {
-        temp = a;
-        document.getElementById('dis').value += temp;
+    } 
+}
+function calculate(a){
+        //document.getElementById('dis').value = '';
+        temp=Number(temp)*10+a;
+        document.getElementById('dis').value = temp;
         count++;
-    }
 }
 
-function add(k) {
-    counter++;
+function add() {
+    if (counter == 1) {
+        //temp = parseInt(k);
+        result = Number(temp);
+        document.getElementById('dis').value = '';
+        temp = 0;
+        counter++;
+    } else {
+        if(optp!='+'){
+            check();
+        }
+        else{
+        //temp = parseInt(k);
+        result = result + Number(temp);
+        document.getElementById('dis').value = result;
+        temp = 0;
+        counter++;
+        }
+    }
     optp = '+';
-    if (counter % 2 != 0) {
-        temp = parseInt(k);
-        result = temp;
-        document.getElementById('dis').value = '';
-        temp = 0;
-    } else {
-        temp = parseInt(k);
-        result = result + temp;
-        document.getElementById('dis').value = result;
-        temp = 0;
-    }
 }
 
-function sub(k) {
-    counter++;
+function sub() {
+    if (counter == 1) {
+        //temp = parseInt(k);
+        result = Number(temp);
+        document.getElementById('dis').value = '';
+        temp = 0;
+        counter++;
+    } else {
+        if(optp!='-'){
+            check();
+        }
+        else{
+        //temp = parseInt(k);
+        result = result - Number(temp);
+        document.getElementById('dis').value = result;
+        temp = 0;
+        counter++;
+        }
+    }
     optp = '-';
-    if (counter % 2 != 0) {
-        temp = parseInt(k);
-        result = temp;
-        document.getElementById('dis').value = '';
-        temp = 0;
-    } else {
-        temp = parseInt(k);
-        result = result - temp;
-        document.getElementById('dis').value = result;
-        temp = 0;
-    }
 }
 
-function mul(k) {
-    counter++;
+
+function mul() {
+    if (counter == 1) {
+        //temp = parseInt(k);
+        result = Number(temp);
+        document.getElementById('dis').value = '';
+        temp = 0;
+        counter++;
+    } else {
+        if(optp!='*'){
+            check();
+        }
+        else{
+        //temp = parseInt(k);
+        result = result * Number(temp);
+        document.getElementById('dis').value = result;
+        temp = 0;
+        counter++;
+        }
+    }
     optp = '*';
-    if (counter % 2 != 0) {
-        temp = parseInt(k);
-        result = temp;
-        document.getElementById('dis').value = '';
-        temp = 0;
-    } else {
-        temp = parseInt(k);
-        result = result * temp;
-        document.getElementById('dis').value = result;
-        temp = 0;
-    }
 }
 
-function div(k) {
-    counter++;
+
+function div() {
+    if (counter == 1) {
+        //temp = parseInt(k);
+        result = Number(temp);
+        document.getElementById('dis').value = '';
+        temp = 0;
+        counter++;
+    } else {
+        if(optp!='/'){
+            check();
+        }
+        else{
+        //temp = parseInt(k);
+        result = result / Number(temp);
+        document.getElementById('dis').value = result;
+        temp = 0;
+        counter++;
+        }
+    }
     optp = '/';
-    if (counter % 2 != 0) {
-        temp = parseInt(k);
-        result = temp;
-        document.getElementById('dis').value = '';
-        temp = 0;
-    } else {
-        temp = parseInt(k);
-        result = result / temp;
-        document.getElementById('dis').value = result;
-        temp = 0;
-    }
 }
 
-function mod(k) {
-    counter++;
-    optp = '%';
-    if (counter % 2 != 0) {
-        temp = parseInt(k);
-        result = temp;
+
+
+function mod() {
+    if (counter == 1) {
+        //temp = parseInt(k);
+        result = Number(temp);
         document.getElementById('dis').value = '';
         temp = 0;
+        counter++;
     } else {
-        temp = parseInt(k);
-        result = result % temp;
+        if(optp!='%'){
+            check();
+        }
+        else{
+        //temp = parseInt(k);
+        result = result % Number(temp);
         document.getElementById('dis').value = result;
         temp = 0;
+        counter++;
+        }
     }
+    optp = '%';
 }
+
+
 
 function res() {
     if (optp == '+') {
-        add(document.getElementById('dis').value);
+        add();
     }
     if (optp == '-') {
-        sub(document.getElementById('dis').value);
+        sub();
     }
     if (optp == '*') {
-        mul(document.getElementById('dis').value);
+        mul();
     }
     if (optp == '/') {
-        div(document.getElementById('dis').value);
+        div();
     }
     if (optp == '%') {
-        mod(document.getElementById('dis').value);
+        mod();
     }
-
 }
+    function check(){
+        if(optp=='+'){
+            add();
+        }
+        if(optp=='-'){
+           sub();
+        }
+        if(optp=='*'){
+            mul();
+        }
+        if(optp=='/'){
+            div();
+        }
+        if(optp=='%'){
+            mod();
+        }
+    }
